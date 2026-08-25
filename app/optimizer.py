@@ -1,4 +1,6 @@
-def fillSlot(slot, slots, playerList, usedPlayers, memo={}): # slot = position we are trying to fill, slots = positions available, playerList = list of players, usedPlayers = set of players already used in roster using their indices in the list
+def fillSlot(slot, slots, playerList, usedPlayers, memo=None): # slot = position we are trying to fill, slots = positions available, playerList = list of players, usedPlayers = set of players already used in roster using their indices in the list
+    if memo is None:
+        memo = {} # Memoization dictionary to store previously computed results for specific slot and usedPlayers combinations
     if slot >= len(slots): # Checks amount of positions, if no position is filled
         return (0, [])
     elif (slot, frozenset(usedPlayers)) in memo:
