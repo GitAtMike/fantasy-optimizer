@@ -1,5 +1,5 @@
 from espn_api.football import League
-from config import LEAGUE_ID, YEAR, SWID, ESPN_S2
+from config import LEAGUE_ID, YEAR, SWID, ESPN_S2, MY_TEAM_NAME
 from data import build_slots, filter_healthy_players, build_player_tuples
 from optimizer import fillSlot
 
@@ -10,7 +10,7 @@ slots = build_slots(league.settings.position_slot_counts)
 # print(len(slots))
 
 for team in league.teams:
-    if team.team_name == "Mike's Mafia":
+    if team.team_name == MY_TEAM_NAME:
         fullHealthyRoster = filter_healthy_players(team.roster)
         fullBuiltRoster = build_player_tuples(fullHealthyRoster)
         finalRosterScore, finalRosterBuild = fillSlot(0, slots, fullBuiltRoster, set(), {})

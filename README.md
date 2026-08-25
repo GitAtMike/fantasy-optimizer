@@ -12,10 +12,13 @@ It accounts for constraints such as position eligibility and one player per slot
 2. Create and activate the venv (python -m venv venv) (venv\Scripts\activate)
 3. Install dependencies (pip install espn_api)
 4. Create your own config.py needing your league ID and ESPN cookies by manually getting your SWID/espn_S2 from browser cookies for any private leagues
+```
 LEAGUE_ID = 123456
 YEAR = 2026
 SWID = "{your-swid-here}"
 ESPN_S2 = "your-espn-s2-here"
+MY_TEAM_NAME = "Your Team Name"
+```
 5. Run by typing python main.py in the terminal
 
 ## How it works
@@ -31,7 +34,7 @@ This folder shows the progression and building blocks to build the app.
 (hash sets -> two pointers -> recursion -> memoized knapsack -> memoized slot-assignment)
 
 ## Example output
-
+```
 Total Score: 122.32
 
 QB -> Brock Purdy
@@ -43,3 +46,4 @@ TE -> Sam LaPorta
 FLEX -> D'Andre Swift
 D/ST -> Lions D/ST
 K -> Eddy Pineiro
+```
