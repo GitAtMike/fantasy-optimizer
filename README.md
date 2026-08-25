@@ -17,7 +17,6 @@ LEAGUE_ID = 123456
 YEAR = 2026
 SWID = "{your-swid-here}"
 ESPN_S2 = "your-espn-s2-here"
-MY_TEAM_NAME = "Your Team Name"
 ```
 5. Run by typing python main.py in the terminal
 
