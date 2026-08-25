@@ -33,7 +33,7 @@ This folder shows the progression and building blocks to build the app.
 (hash sets -> two pointers -> recursion -> memoized knapsack -> memoized slot-assignment)
 
 ## Example output
-
+```
 Total Score: 122.32
 
 QB -> Brock Purdy
@@ -45,3 +45,4 @@ TE -> Sam LaPorta
 FLEX -> D'Andre Swift
 D/ST -> Lions D/ST
 K -> Eddy Pineiro
+```
