@@ -39,8 +39,7 @@ These tests verify that the program runs as it is intended.
 The core algorithm is put against toy data with an expected pass or fail dependent on the toy data values.
 The test locks in on a known correct-answer. If the algorithm breaks, the test will catch it.
 ```
-Command:
-pytest
+Command: pytest
 ```
 
 ## Example output
