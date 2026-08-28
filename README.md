@@ -10,7 +10,7 @@ It accounts for constraints such as position eligibility and one player per slot
 
 1. Clone the repo
 2. Create and activate the venv (python -m venv venv) (venv\Scripts\activate)
-3. Install dependencies (pip install espn_api)
+3. Install dependencies (pip install -r requirements.txt)
 4. Create your own config.py needing your league ID and ESPN cookies by manually getting your SWID/espn_S2 from browser cookies for any private leagues
 ```
 LEAGUE_ID = 123456
@@ -32,6 +32,16 @@ It tracks a set of used players instead of a shrinking numeric budget.
 
 This folder shows the progression and building blocks to build the app.
 (hash sets -> two pointers -> recursion -> memoized knapsack -> memoized slot-assignment)
+
+## Tests
+
+These tests verify that the program runs as it is intended.
+The core algorithm is put against toy data with an expected pass or fail dependent on the toy data values.
+The test locks in on a known correct-answer. If the algorithm breaks, the test will catch it.
+Command:
+```
+pytest
+```
 
 ## Example output
 ```

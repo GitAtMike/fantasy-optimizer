@@ -8,8 +8,10 @@ def fillSlot(slot, slots, playerList, usedPlayers, memo=None): # slot = position
     else:
         eligiblePlayers = []
         for playerIndex, player in enumerate(playerList): # Gets a list of eligible players for a position
-            if ((player[1] == slots[slot]) or (slots[slot] == "FLEX" and player[1] in ["RB", "WR", "TE"])) and playerIndex not in usedPlayers: # FLEX gets it's own check due to multiple positions being eligible
+            if ((slots[slot] in player[3]) or (slots[slot] == "FLEX" and "RB/WR/TE" in player[3])) and playerIndex not in usedPlayers: # FLEX gets it's own check due to multiple positions being eligible
                 eligiblePlayers.append(playerIndex)
+        if len(eligiblePlayers) == 0: # If no eligible players are found for a position, stops immediately and raises an error
+            raise ValueError(f"No eligible players found for position {slots[slot]}.")
         bestScore = 0
         bestAssignment = []
         for candidate in eligiblePlayers: # Gets the best score for a position
