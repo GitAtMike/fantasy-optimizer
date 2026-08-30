@@ -15,9 +15,9 @@ def build_slots(position_slot_counts):
             slots += [position] * position_slot_counts[position]
     return slots
 
-def build_player_tuples(roster):
+def build_player_tuples(roster, week):
     players = []
     for player in roster:
-        playerInfo = (player.name, player.position, player.projected_avg_points, player.eligibleSlots)
+        playerInfo = (player.name, player.position, player.stats[week]['projected_points'], player.eligibleSlots)
         players.append(playerInfo)
     return players
