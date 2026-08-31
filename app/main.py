@@ -8,7 +8,7 @@ league = League(league_id=LEAGUE_ID, year=YEAR, swid=SWID, espn_s2=ESPN_S2)
 
 slots = build_slots(league.settings.position_slot_counts)
 
-# Get's the home and away teams for the current week and determines which is the user's team and which is the opponent's team
+# Gets the home and away teams for the current week and determines which is the user's team and which is the opponent's team
 for team in league.scoreboard():
     if team.home_team.team_name == MY_TEAM_NAME:
         opponentTeam = team.away_team
@@ -29,7 +29,8 @@ print(f"\nMy Total Score: {myTotalScore}\n")
 for slot_index, player_index in finalRosterBuild:
     print(slots[slot_index], "->", fullBuiltRoster[player_index][0])
 
-# Calculates the opponent's actual score and builds a list of their lineup by slot, get's the opponents actual roster instead of the optimal as this is what the user is competing against
+# Calculates the opponent's actual score and builds a list of their lineup by slot.
+# Gets the opponent's actual roster instead of the optimal as this is what the user is competing against
 opponentActualScore = 0
 lineupBySlot = {}
 for player in opponentTeam.roster:
@@ -72,6 +73,7 @@ freeAgentHealthyRoster = filter_healthy_players(league.free_agents(size=200))
 freeAgentBuiltRoster = build_player_tuples(freeAgentHealthyRoster,league.current_week)
 
 # Compares the user's roster to the free agent pool and prints out any potential upgrades for each position in the user's roster
+# Slot-by-slot comparison used due to time complexity of fillSlot with a large free agent pool
 for slot_index, play_index in finalRosterBuild:
     bestPoints = 0
     bestName = None
