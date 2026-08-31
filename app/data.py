@@ -2,8 +2,11 @@ def filter_healthy_players(roster):
     allowList = {"ACTIVE", "NORMAL", "QUESTIONABLE"}
     healthyPlayers = []
     for player in roster:
+        if isinstance(player.injuryStatus, str):
                 if (player.injuryStatus in allowList):
                     healthyPlayers.append(player)
+        else:
+            healthyPlayers.append(player)
     return healthyPlayers
 
 def build_slots(position_slot_counts):
@@ -18,6 +21,6 @@ def build_slots(position_slot_counts):
 def build_player_tuples(roster, week):
     players = []
     for player in roster:
-        playerInfo = (player.name, player.position, player.stats[week]['projected_points'], player.eligibleSlots)
+        playerInfo = (player.name, player.position, player.stats.get(week, {}).get('projected_points', 0), player.eligibleSlots)
         players.append(playerInfo)
     return players
