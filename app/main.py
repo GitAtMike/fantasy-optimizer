@@ -69,7 +69,7 @@ else:
 print("\n")
 
 
-freeAgentHealthyRoster = filter_healthy_players(league.free_agents(size=200))
+freeAgentHealthyRoster = filter_healthy_players(league.free_agents())
 freeAgentBuiltRoster = build_player_tuples(freeAgentHealthyRoster,league.current_week)
 
 # Compares the user's roster to the free agent pool and prints out any potential upgrades for each position in the user's roster
