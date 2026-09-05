@@ -1,5 +1,6 @@
+from typing import Any
 # Filters out injured players from a roster
-def filter_healthy_players(roster):
+def filter_healthy_players(roster: list[Any]) -> list[Any]:
     allowList = {"ACTIVE", "NORMAL", "QUESTIONABLE"}
     healthyPlayers = []
     for player in roster:
@@ -11,7 +12,7 @@ def filter_healthy_players(roster):
     return healthyPlayers
 
 # Builds a list of slots based on the position_slot_counts dictionary from the league settings
-def build_slots(position_slot_counts):
+def build_slots(position_slot_counts: dict[str, int]) -> list[str]:
     slots=[]
     for position in ["QB", "RB", "WR", "TE", "RB/WR/TE", "D/ST", "K"]:
         if position in ["RB/WR/TE"]: # ESPN uses RB/WR/TE for the FLEX position, so to show FLEX in the output, we need to add it to the slots list for each FLEX position in the league settings
@@ -21,7 +22,7 @@ def build_slots(position_slot_counts):
     return slots
 
 # Builds a list of player tuples based on the roster and the current week, where each tuple contains the player's name, position, projected points for the current week, and eligible slots
-def build_player_tuples(roster, week):
+def build_player_tuples(roster: list[Any], week: int) -> list[tuple[str, str, float, list[str]]]:
     players = []
     for player in roster:
         playerInfo = (player.name, player.position, player.stats.get(week, {}).get('projected_points', 0), player.eligibleSlots) # Subs a 0 for projected points if the player does not have a projection for the current week

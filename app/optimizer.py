@@ -1,4 +1,5 @@
-def fillSlot(slot, slots, playerList, usedPlayers, memo=None): # slot = position we are trying to fill, slots = positions available, playerList = list of players, usedPlayers = set of players already used in roster using their indices in the list
+from typing import Optional
+def fillSlot(slot: int, slots: list[str], playerList: list[tuple[str, str, float, list[str]]], usedPlayers: set[int], memo: Optional[dict[tuple[int, frozenset[int]], tuple[float, list[tuple[int, int]]]]] = None) -> tuple[float, list[tuple[int, int]]]: # slot = position we are trying to fill, slots = positions available, playerList = list of players, usedPlayers = set of players already used in roster using their indices in the list
     if memo is None:
         memo = {} # Memoization dictionary to store previously computed results for specific slot and usedPlayers combinations
     if slot >= len(slots): # Checks amount of positions, if no position is filled
