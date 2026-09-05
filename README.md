@@ -41,6 +41,8 @@ This folder shows the progression and building blocks to build the app.
 
 These tests verify that the program runs as it is intended.
 The core algorithm is put against toy data with an expected pass or fail dependent on the toy data values.
+test_optimizer.py tests the fill_slot algorithm.
+test_data.py tests the data-shaping functions including any edge cases.
 The test locks in on a known correct-answer. If the algorithm breaks, the test will catch it.
 ```
 Command: pytest
