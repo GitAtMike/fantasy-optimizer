@@ -7,6 +7,7 @@ This app looks at the roster, sees the average fantasy points per game, and puts
 It accounts for constraints such as position eligibility and one player per slot.
 Compares user's most optimal lineup against opponent's current lineup and compares the two scores.
 Surfaces free-agent pool slot-by-slot and provides suggestions if a free-agent provides more points at a given position.
+Logs each week's result to a local database.
 
 ## Setup
 
@@ -31,6 +32,8 @@ In place, I built a recursive, memoized algorithm that assigns players to slots(
 It tracks a set of used players instead of a shrinking numeric budget.
 For free-agent comparisons, I initially was going to use fillSlot to compare free agents with roster, but hit exponential slowdown once the pool got larger.
 Switched to a slot-by-slot comparison to increase speed.
+Using an INSERT or UPDATE check to only update the rows if they exist. If they don't exists, then a row is created. Keeps the id stable.
+Keeping the id stable so if we need to access a row specifically by id, it will grab the correct one since the id doesn't change now.
 
 ## Foundations
 

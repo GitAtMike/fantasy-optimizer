@@ -3,6 +3,11 @@ from config import LEAGUE_ID, YEAR, SWID, ESPN_S2, MY_TEAM_NAME
 from data import build_slots, filter_healthy_players, build_player_tuples
 from optimizer import fillSlot
 import math
+from db import init_db, log_result
+import datetime
+
+init_db()  # Initialize the database
+today = str(datetime.date.today())
 
 league = League(league_id=LEAGUE_ID, year=YEAR, swid=SWID, espn_s2=ESPN_S2)
 
@@ -84,3 +89,5 @@ for slot_index, play_index in finalRosterBuild:
                 bestName = freeAgent[0]
     if bestPoints > fullBuiltRoster[play_index][2]:
         print(f"Slot: {slots[slot_index]} | Current Player: {fullBuiltRoster[play_index][0]} ({fullBuiltRoster[play_index][2]}) | Best Free Agent: {bestName} ({bestPoints})")
+
+log_result(league.current_week, today, myTotalScore, opponentTotalScore, opponentTeamName, "Projected Win" if myTotalScore > opponentTotalScore else "Projected Loss" if myTotalScore < opponentTotalScore else "Projected Tie")
